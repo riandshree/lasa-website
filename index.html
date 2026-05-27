@@ -597,11 +597,15 @@
     .testimonial-inner {
       display:grid; grid-template-columns:1fr 1.4fr; gap:6rem; align-items:center;
     }
-    .testimonial-photo {
-      position:relative; border-radius:3px; overflow:hidden; aspect-ratio:3/4;
+    .testimonial-photos {
+      position:relative; display:grid; grid-template-columns:1fr 1fr;
+      grid-template-rows:1fr 1fr; gap:6px; border-radius:3px; overflow:hidden; min-height:400px;
       box-shadow:0 32px 80px rgba(0,0,0,.14);
     }
-    .testimonial-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .test-photo-main { grid-row:span 2; overflow:hidden; }
+    .test-photo-secondary { overflow:hidden; }
+    .testimonial-photos img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+    .testimonial-photos img:hover { transform:scale(1.04); }
     .testimonial-photo-label {
       position:absolute; bottom:0; left:0; right:0;
       background:linear-gradient(to top, rgba(20,46,34,.9) 0%,transparent 100%);
@@ -626,7 +630,7 @@
 
     @media(max-width:960px) {
       .nithya-inner, .testimonial-inner { grid-template-columns:1fr; gap:3rem; }
-      .testimonial-photo { aspect-ratio:4/3; }
+      .testimonial-photos { min-height:280px; }
       .impact-grid { grid-template-columns:1fr 1fr; }
       .imp-item:nth-child(2) { border-right:none; }
       .imp-item:nth-child(3) { border-right:1px solid var(--cream-dkr); padding-left:0; }
@@ -693,7 +697,7 @@
   </div>
   <div class="hero-bottom">
     <div class="scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
-    <div class="hero-reg-pill">12AA &nbsp;·&nbsp; 80G &nbsp;·&nbsp; Niti Aayog<br/>Guide Star GSN 7016</div>
+    <div class="hero-reg-pill">12A &nbsp;·&nbsp; 80G &nbsp;·&nbsp; Niti Aayog<br/>Guide Star GSN 7016</div>
   </div>
 </section>
 
@@ -756,12 +760,12 @@
     <p>LASA Charitable Foundation is a nonprofit registered under Section 8 of the Companies Act since December 2014. We are dedicated to working with economically poor children, families, and their communities — especially in rural areas.</p>
     <p>Our activities are aimed at making education enjoyable and inspiring, and at empowering schools so that even the poorest children get quality education. We also build life skills and empower parents — particularly women — to live productive, independent lives.</p>
     <div class="creds">
-      <span class="badge">12AA Registered</span>
+      <span class="badge">12A Registered</span>
       <span class="badge">80G Certified</span>
       <span class="badge">Niti Aayog</span>
       <span class="badge">Guide Star GSN 7016</span>
       <span class="badge">Bridge Registry</span>
-      <span class="badge">UN Civil Society</span>
+      <span class="badge">CSR-1 Registered</span>
     </div>
   </div>
   <div class="about-visual reveal">
@@ -899,7 +903,7 @@
     <div class="nithya-quote reveal">
       <blockquote>"Nourishing Lives. Supporting Healing. Serving Humanity."</blockquote>
       <cite>— LASA Charitable Foundation</cite>
-      <p style="color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.8;margin-top:1.8rem;">Fresh cooked meals, daily fruit distribution to admitted patients, and the quiet dignity of knowing someone cares — that is what Nithya Annadhan Seva delivers, every single day at Regional Cancer Hospital, Nagpur.</p>
+      <p style="color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.8;margin-top:1.8rem;">Fresh cooked meals, fruit distribution to admitted patients, and the quiet dignity of knowing someone cares — that is what Nithya Annadhan Seva delivers, every single day at Regional Cancer Hospital, Nagpur.</p>
       <a href="#donate" class="btn-pri" style="margin-top:2rem;display:inline-flex;">Support This Initiative &rarr;</a>
     </div>
   </div>
@@ -967,8 +971,16 @@
 <!-- TESTIMONIAL -->
 <section id="testimonial">
   <div class="testimonial-inner">
-    <div class="testimonial-photo reveal">
-      <img src="photos/gallery1.jpg" alt="LASA programme — community gathering"/>
+    <div class="testimonial-photos reveal">
+      <div class="test-photo-main">
+        <img src="photos/testimony1.jpg" alt="Families queuing for meals at Regional Cancer Hospital"/>
+      </div>
+      <div class="test-photo-secondary">
+        <img src="photos/testimony2.jpg" alt="Nithya Annadhan Seva — meal distribution"/>
+      </div>
+      <div class="test-photo-secondary">
+        <img src="photos/testimony3.jpg" alt="Caregivers waiting — Nithya Annadhan Seva"/>
+      </div>
       <div class="testimonial-photo-label">Regional Cancer Hospital, Nagpur</div>
     </div>
     <div class="testimonial-body reveal">
@@ -1028,6 +1040,15 @@
         <label>Phone Number</label>
         <input type="tel" id="d-phone" placeholder="+91 98765 43210"/>
       </div>
+      <div class="fg">
+        <label>City / Place</label>
+        <input type="text" id="d-city" placeholder="Your city"/>
+      </div>
+      <div class="fg">
+        <label>PAN / Aadhar Number <span style="color:var(--ochre);">*</span></label>
+        <input type="text" id="d-pan" placeholder="Required for 80G tax receipt" style="text-transform:uppercase;"/>
+        <small style="font-size:.7rem;color:var(--muted);margin-top:.35rem;display:block;">PAN is required to issue your 80G tax exemption certificate</small>
+      </div>
       <button class="donate-btn" onclick="pay()">Proceed to Donate &rarr;</button>
       <p class="secure">🔒 Secured by Razorpay</p>
       <p class="refund-note">In case of an erroneous donation, write to us within 2 working days with your payment receipt. Refunds are processed within 15 working days subject to our refund policy.</p>
@@ -1046,7 +1067,7 @@
       <p class="foot-about">A nonprofit dedicated to ensuring every child goes to school, stays in school, and receives the quality education they deserve — especially in rural India.</p>
       <p class="foot-reg">
         CIN: U74900MH2014NPL259952 &nbsp;·&nbsp; Niti Aayog: MH/2017/0153857<br/>
-        10AB: AACCL7771N25PN01 &nbsp;·&nbsp; 80G: AACCL7771N25PN02<br/>
+        12A: AACCL7771N25PN01 &nbsp;·&nbsp; 80G: AACCL7771N25PN02<br/>
         CSR-1: CSR00065615 &nbsp;·&nbsp; Guidestar: GSN 7016
       </p>
     </div>
@@ -1076,7 +1097,7 @@
     <p>© 2026 LASA Charitable Foundation. All rights reserved.</p>
     <div class="foot-badges">
       <span class="fb">Sec 8</span>
-      <span class="fb">12AA</span>
+      <span class="fb">12A</span>
       <span class="fb">80G</span>
       <span class="fb">Niti Aayog</span>
       <span class="fb">Guide Star</span>
@@ -1161,26 +1182,53 @@
     });
   });
 
-  /* ── RAZORPAY ── */
+  /* ── RAZORPAY + DONOR CAPTURE ── */
+  // 🔗 Replace with your Google Apps Script Web App URL after setting it up
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzIO4cfbV1-GDFDYLmAyZPhrjn_4ZewRKZfZ_Mf1cbpB754BWGJ0fTHY64sZizz9lyL/exec';
+
+  function saveDonorToSheet(data) {
+    if (SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') return; // not set up yet
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(err => console.log('Sheet save error:', err));
+  }
+
   function pay() {
     const name  = document.getElementById('d-name').value.trim();
     const email = document.getElementById('d-email').value.trim();
     const phone = document.getElementById('d-phone').value.trim();
+    const pan   = document.getElementById('d-pan').value.trim().toUpperCase();
+    const city  = document.getElementById('d-city').value.trim();
     const amt   = selAmt || parseInt(document.getElementById('custom-val').value);
     if (!name || !email) { alert('Please enter your name and email.'); return; }
+    if (!pan) { alert('PAN / Aadhar number is required for your 80G tax receipt.'); return; }
     if (!amt || amt < 100) { alert('Minimum donation amount is ₹100.'); return; }
     const rzp = new Razorpay({
-      key: 'rzp_live_AWxycWZ7GR74Kl',  // 🔑 Replace with actual Key ID before going live
+      key: 'YOUR_RAZORPAY_KEY_ID',  // 🔑 Replace with actual Key ID before going live
       amount: amt * 100,
       currency: 'INR',
       name: 'LASA Charitable Foundation',
       description: 'Donation — Education for Underprivileged Children',
       image: '',
       handler: function(res) {
+        // Save donor details to Google Sheet
+        saveDonorToSheet({
+          timestamp:  new Date().toISOString(),
+          name:       name,
+          email:      email,
+          phone:      phone,
+          city:       city,
+          pan:        pan,
+          amount:     amt,
+          payment_id: res.razorpay_payment_id
+        });
         alert(`Thank you, ${name}!\n\nYour donation of ₹${amt.toLocaleString('en-IN')} was received.\nPayment ID: ${res.razorpay_payment_id}\n\nAn 80G receipt will be sent to ${email} within 7 working days.`);
       },
       prefill: { name, email, contact: phone },
-      notes: { purpose: 'Donation to LASA Charitable Foundation' },
+      notes: { purpose: 'Donation to LASA Charitable Foundation', pan: pan },
       theme: { color: '#1b3a2d' }
     });
     rzp.open();
